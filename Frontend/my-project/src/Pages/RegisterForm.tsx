@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import InputField from '../components/InputFilds';
 import ErrorMessage from '../components/ErrorMassage';
 import Button from '../components/Buttons';
+import '../Styles/RegisterForm.css';
 
 interface FormData {
   username: string;

@@ -1,0 +1,25 @@
+.sidebar-right {
+  width: 240px;
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 20px;
+  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.quick-links {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.quick-links p {
+  font-size: 1rem;
+  color: #374151;
+  font-weight: 500;
+}

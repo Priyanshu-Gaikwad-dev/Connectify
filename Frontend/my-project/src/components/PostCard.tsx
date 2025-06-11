@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Styles/PostCard.css';
 
 interface PostCardProps {
   username: string;

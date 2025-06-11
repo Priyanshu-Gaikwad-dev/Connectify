@@ -1,0 +1,46 @@
+.sidebar-left {
+  width: 240px;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  padding: 20px;
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.profile img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.profile p {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.sidebar-left ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-left li {
+  margin: 15px 0;
+  cursor: pointer;
+  font-size: 1rem;
+  color: #444;
+  transition: color 0.2s ease;
+}
+
+.sidebar-left li:hover {
+  color: #1f2937;
+}

@@ -1,0 +1,20 @@
+.feed {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: calc(100vh - 40px); /* Adjust for any header/footer if present */
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.feed::-webkit-scrollbar {
+  width: 6px;
+}
+
+.feed::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}

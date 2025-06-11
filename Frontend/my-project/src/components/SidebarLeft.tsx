@@ -1,4 +1,5 @@
 import React from 'react';
+import '../Styles/SidebarLeft.css'; // ✅ Use `.css` in lowercase
 
 const SidebarLeft: React.FC = () => {
   return (

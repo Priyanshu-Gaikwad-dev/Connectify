@@ -1,0 +1,25 @@
+.logout-button {
+  background-color: #ef4444; /* Tailwind Red-500 */
+  color: white;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.logout-button:hover {
+  background-color: #dc2626; /* Red-600 */
+  transform: scale(1.03);
+}
+
+.logout-button:active {
+  background-color: #b91c1c; /* Red-700 */
+}
+
+.logout-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3); /* red focus ring */
+}

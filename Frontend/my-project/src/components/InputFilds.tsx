@@ -1,3 +1,4 @@
+import '../Styles/InputFilds.css';
 import React from 'react';
 
 interface InputProps {

@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import RegisterForm from "./Pages/RegisterForm";
 import LoginForm from "./Pages/LoginForm";
 import DashboardLayout from "./Pages/DashboardLayout";
+import "./App.css";
 
 const App: React.FC = () => (
   <Router>

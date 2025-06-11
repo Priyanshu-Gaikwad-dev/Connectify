@@ -1,0 +1,84 @@
+.dashboard-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafb;
+  position: relative;
+}
+
+/* Left Sidebar */
+.sidebar-left {
+  width: 20%;
+  min-width: 220px;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  top: 0;
+  left: 0;
+}
+
+/* Center Feed */
+.feed {
+  flex: 1;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 20px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+/* Right Sidebar */
+.sidebar-right {
+  width: 20%;
+  min-width: 220px;
+  background-color: #ffffff;
+  border-left: 1px solid #e5e7eb;
+  padding: 20px;
+  position: fixed;
+  height: 100%;
+  overflow-y: auto;
+  top: 0;
+  right: 0;
+}
+
+/* Floating Button */
+.floating-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.floating-button:hover {
+  background-color: #2563eb;
+}
+
+/* Scrollbar Styling */
+.feed::-webkit-scrollbar,
+.sidebar-left::-webkit-scrollbar,
+.sidebar-right::-webkit-scrollbar {
+  width: 8px;
+}
+
+.feed::-webkit-scrollbar-thumb,
+.sidebar-left::-webkit-scrollbar-thumb,
+.sidebar-right::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 10px;
+}

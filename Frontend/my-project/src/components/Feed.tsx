@@ -1,14 +1,17 @@
 import React from 'react';
 import PostCard from './PostCard';
+import '../Styles/Feed.css';
 
-const Feed: React.FC = () => {
-  return (
-    <div className="feed">
-      {[1, 2, 3].map((postId) => (
-        <PostCard key={postId} username="user" timestamp="Just now" content="This is a post." />
-      ))}
-    </div>
-  );
-};
+interface FeedProps {
+  posts: string[];
+}
+
+const Feed: React.FC<FeedProps> = ({ posts }) => (
+  <div className="feed">
+    {posts.map((post, index) => (
+      <PostCard key={index} username="User" timestamp="Just now" content={post} />
+    ))}
+  </div>
+);
 
 export default Feed;

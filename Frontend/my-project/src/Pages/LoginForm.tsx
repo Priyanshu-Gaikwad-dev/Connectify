@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import InputField from '../components/InputFilds';
 import Button from '../components/Buttons';
 import ErrorMessage from '../components/ErrorMassage';
+import '../Styles/LoginForm.css';
 
 const LoginForm: React.FC = () => {
   const [username, setUsername] = useState('');
