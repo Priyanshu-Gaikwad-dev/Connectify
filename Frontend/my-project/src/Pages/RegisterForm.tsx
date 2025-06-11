@@ -26,10 +26,10 @@ const RegisterForm: React.FC = () => {
 
   useEffect(() => {
     const isFormValid =
-      formData.username &&
+      !!formData.username &&
       /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData.email) &&
-      formData.password &&
-      formData.confirmPassword &&
+      !!formData.password &&
+      !!formData.confirmPassword &&
       formData.password === formData.confirmPassword;
 
     setCanSubmit(isFormValid);
