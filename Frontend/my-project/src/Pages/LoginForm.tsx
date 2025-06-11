@@ -1,80 +1,45 @@
 import React, { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import InputField from '../components/InputFilds';
 import Button from '../components/Buttons';
 import ErrorMessage from '../components/ErrorMassage';
-import '../Style/LoginForm.css';
-import { useNavigate } from 'react-router-dom';
-
-interface FormData {
-  username: string;
-  password: string;
-}
 
 const LoginForm: React.FC = () => {
-  const [formData, setFormData] = useState<FormData>({ username: '', password: '' });
-  const [formErrors, setFormErrors] = useState<Partial<FormData>>({});
-  const [loginError, setLoginError] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const validate = (): Partial<FormData> => {
-    const errors: Partial<FormData> = {};
-    if (!formData.username.trim()) errors.username = 'Username is required';
-    if (!formData.password.trim()) errors.password = 'Password is required';
-    return errors;
-  };
+  const canSubmit = username.trim() && password.trim();
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setFormErrors({ ...formErrors, [e.target.name]: '' });
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    const errors = validate();
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
+    setErrorMsg('');
+    if (!canSubmit) return;
 
     setLoading(true);
-    setLoginError('');
-
     setTimeout(() => {
       setLoading(false);
-      if (formData.username === 'admin' && formData.password === 'admin') {
+      if (username === 'admin' && password === 'admin') {
         navigate('/dashboard');
       } else {
-        setLoginError('Invalid credentials');
+        setErrorMsg('Invalid credentials');
       }
     }, 1500);
   };
 
   return (
-    <div className="login-container">
-      <form className="login-card" onSubmit={handleSubmit}>
+    <div className="register-container">
+      <form className="register-card" onSubmit={handleLogin}>
         <h2>Login</h2>
-        <InputField
-          label="Username"
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-          error={formErrors.username}
-        />
-        <InputField
-          label="Password"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          error={formErrors.password}
-        />
-        <div className="forgot-password">
-          <a href="#">Forgot Password?</a>
-        </div>
-        <Button text="Login" loading={loading} disabled={!formData.username || !formData.password} />
-        <ErrorMessage message={loginError} />
+        <InputField label="Username" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
+        <InputField label="Password" type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <Button text="Login" type="submit" disabled={!canSubmit} loading={loading} />
+        <ErrorMessage message={errorMsg} />
+        <p style={{ marginTop: '10px', fontSize: '14px' }}>
+          Don’t have an account? <Link to="/register">Register here</Link>
+        </p>
       </form>
     </div>
   );

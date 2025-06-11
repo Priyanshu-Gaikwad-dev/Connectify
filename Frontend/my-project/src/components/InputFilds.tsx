@@ -1,7 +1,6 @@
 import React from 'react';
-import '../Style/InputFilds.css';
 
-interface InputFieldProps {
+interface InputProps {
   label: string;
   type: string;
   name: string;
@@ -10,16 +9,16 @@ interface InputFieldProps {
   error?: string;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ label, type, name, value, onChange, error }) => {
+const InputField: React.FC<InputProps> = ({ label, type, name, value, onChange, error }) => {
   return (
     <div className="input-group">
       <label>{label}</label>
       <input
+        className={`input ${error ? 'error' : ''}`}
         type={type}
         name={name}
         value={value}
         onChange={onChange}
-        className={`input ${error ? 'error' : ''}`}
       />
       {error && <div className="error-text">{error}</div>}
     </div>
