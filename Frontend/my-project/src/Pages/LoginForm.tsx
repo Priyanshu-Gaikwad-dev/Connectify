@@ -36,6 +36,7 @@ const LoginForm: React.FC = () => {
         <h2>Login</h2>
         <InputField label="Username" type="text" name="username" value={username} onChange={(e) => setUsername(e.target.value)} />
         <InputField label="Password" type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <Link to="/forgot-password" className="forgot-password-link">Forgot password?</Link>
         <Button text="Login" type="submit" disabled={!canSubmit} loading={loading} />
         <ErrorMessage message={errorMsg} />
         <p style={{ marginTop: '10px', fontSize: '14px' }}>

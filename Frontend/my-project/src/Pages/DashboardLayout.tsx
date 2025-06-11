@@ -1,30 +1,42 @@
 import React, { useState } from 'react';
+import PostInputBox from '../components/PostInputBox';
+import Feed from '../components/Feed';
 import SidebarLeft from '../components/SidebarLeft';
 import SidebarRight from '../components/SidebarRight';
-import Feed from '../components/Feed';
-import FloatingButton from '../components/FloatingButton';
-import NewPostDialog from '../components/NewPostDialog';
-import '../Styles/DashboardLayout.css';
+import '../styles/DashboardLayout.css'; // ✅ make sure the filename matches
+
+interface Post {
+  id: string;
+  content: string;
+  timestamp: Date;
+}
 
 const DashboardLayout: React.FC = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [posts, setPosts] = useState<string[]>([]);
+  const [posts, setPosts] = useState<Post[]>([]);
 
   const handleNewPost = (content: string) => {
-    setPosts([content, ...posts]);
+    const newPost: Post = {
+      id: Date.now().toString(),
+      content,
+      timestamp: new Date(),
+    };
+    setPosts((prevPosts) => [newPost, ...prevPosts]); // ✅ better pattern
   };
 
   return (
     <div className="dashboard-layout">
-      <SidebarLeft />
-      <Feed posts={posts} />
-      <SidebarRight />
-      <FloatingButton onClick={() => setIsModalOpen(true)} />
-      <NewPostDialog
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSubmit={handleNewPost}
-      />
+      <aside className="sidebar-left">
+        <SidebarLeft />
+      </aside>
+
+      <main className="feed-container">
+        <PostInputBox onSubmit={handleNewPost} />
+        <Feed posts={posts} />
+      </main>
+
+      <aside className="sidebar-right">
+        <SidebarRight />
+      </aside>
     </div>
   );
 };

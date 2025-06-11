@@ -1,46 +1,68 @@
 .post-card {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  padding: 16px;
-  margin-bottom: 16px;
-  transition: transform 0.2s ease;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  transition: box-shadow 0.3s ease;
 }
 
 .post-card:hover {
-  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
 
 .post-header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  color: #555;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #666;
 }
 
-.post-header strong {
+.username {
   color: #333;
+  font-weight: 600;
+}
+
+.timestamp {
+  font-size: 12px;
+  color: #999;
 }
 
 .post-content {
-  font-size: 1rem;
-  color: #444;
-  margin-bottom: 12px;
+  font-size: 16px;
+  color: #222;
+  margin-bottom: 14px;
   white-space: pre-wrap;
 }
 
-.like-button {
-  background-color: #ef4444;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease;
+.post-actions {
+  display: flex;
+  gap: 12px;
 }
 
-.like-button:hover {
-  background-color: #dc2626;
+.post-btn {
+  background: #f0f2f5;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.post-btn:hover {
+  background: #e0e3e7;
+}
+
+.like-button {
+  color: #ff4b5c;
+}
+
+.comment-button {
+  color: #3b5998;
+}
+
+.share-button {
+  color: #00b894;
 }
