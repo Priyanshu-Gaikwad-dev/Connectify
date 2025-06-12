@@ -16,6 +16,10 @@ const PostInputBox: React.FC<PostInputBoxProps> = ({ onSubmit }) => {
 
   return (
     <div className="post-input-box">
+      <div className="post-input-header">
+        <h3>Create Post</h3>
+        <p>Share your thoughts with the world!</p>
+      </div>
       <textarea
         placeholder="What's on your mind?"
         value={content}

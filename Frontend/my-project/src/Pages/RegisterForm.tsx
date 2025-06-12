@@ -64,9 +64,10 @@ const RegisterForm: React.FC = () => {
       return;
     }
 
-    setSuccessMsg('Registration successful! Redirecting...');
+    // Show success message and redirect to login page
+    setSuccessMsg('Registration successful! Redirecting to login...');
     setTimeout(() => {
-      navigate('/dashboard');
+      navigate('/'); // Assuming '/' is your login route
     }, 2000);
   };
 
@@ -78,9 +79,17 @@ const RegisterForm: React.FC = () => {
         <InputField label="Email" type="email" name="email" value={formData.email} onChange={handleChange} error={formErrors.email} />
         <InputField label="Password" type="password" name="password" value={formData.password} onChange={handleChange} error={formErrors.password} />
         <InputField label="Confirm Password" type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} error={formErrors.confirmPassword} />
-        <Button text="Register" type="submit" disabled={!canSubmit} />
-        <ErrorMessage message={Object.values(formErrors).join(' ') || successMsg} />
-        <p style={{ marginTop: '10px', fontSize: '14px' }}>
+        <Button 
+          text="Register" 
+          type="submit" 
+          disabled={!canSubmit} 
+        />
+        {successMsg ? (
+          <div className="success-message">{successMsg}</div>
+        ) : (
+          <ErrorMessage message={Object.values(formErrors).join(' ')} />
+        )}
+        <p className="login-link">
           Already have an account? <Link to="/">Login here</Link>
         </p>
       </form>

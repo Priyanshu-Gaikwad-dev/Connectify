@@ -13,13 +13,58 @@
 }
 
 .quick-links {
-  margin-top: auto;
-  padding-top: 20px;
-  border-top: 1px solid #e5e7eb;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .quick-links p {
+  color: #1a1a1a;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e4e6eb;
+}
+
+/* Logout Button Styles */
+.logout-button {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
   font-size: 1rem;
-  color: #374151;
   font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  margin-top: auto;
+}
+
+.logout-button:hover {
+  background-color: #ff7875;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .sidebar-right {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .quick-links {
+    padding: 12px;
+  }
+
+  .quick-links p {
+    font-size: 1rem;
+  }
+
+  .logout-button {
+    padding: 10px 16px;
+  }
 }

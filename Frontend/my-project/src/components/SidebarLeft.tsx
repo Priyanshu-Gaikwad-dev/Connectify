@@ -5,7 +5,7 @@ const SidebarLeft: React.FC = () => {
   return (
     <div className="sidebar-left">
       <div className="profile">
-        <img src="https://via.placeholder.com/80" alt="User" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg" alt="User" />
         <p>@username</p>
       </div>
       <ul>
