@@ -70,6 +70,7 @@ const LoginForm: React.FC = () => {
           value={formData.password} 
           onChange={handleChange}
         />
+        <Link to="/forgot-password" className="forgot-password-link"> Forgot Password </Link>
         <Button 
           text="Login" 
           type="submit" 

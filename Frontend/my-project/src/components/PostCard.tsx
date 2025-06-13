@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import '../Styles/PostCard.css';
 
 interface PostCardProps {
@@ -20,8 +22,11 @@ const PostCard: React.FC<PostCardProps> = ({ username, timestamp, content }) => 
   return (
     <div className="post-card">
       <div className="post-header">
-        <span className="username"><strong>{username}</strong></span>
+        <span className="username"><strong>{username} </strong></span>
+        <div>
         <span className="timestamp">{timeAgo}</span>
+        <button className="ellipsis-button"><FontAwesomeIcon icon={faEllipsisVertical} /></button>
+        </div>
       </div>
       
       <div className="post-content">

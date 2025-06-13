@@ -18,7 +18,7 @@ const Feed: React.FC<FeedProps> = ({ posts }) => (
       <PostCard
         key={post.id}
         username="User"
-        timestamp={post.timestamp.toLocaleString()} // formatted date/time
+        timestamp={post.timestamp} // pass Date object directly
         content={post.content}
       />
     ))}
