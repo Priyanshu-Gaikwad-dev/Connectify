@@ -1,12 +1,15 @@
 /* Layout Container */
 .dashboard-layout {
-    padding: 24px;
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    /* gap: 20px; */
+    padding: 20px;
     background-color: #f0f2f5;
     margin: 0 auto;
     width: 100%;
     max-width: 1400px;
+    min-height: 100vh;
 }
-
 
 
 /* Feed Section */
@@ -52,7 +55,6 @@
         grid-template-columns: 240px 1fr;
     }
 
-    /* Hide right sidebar on medium screens */
     .side:last-child {
         display: none;
     }
@@ -65,7 +67,6 @@
         gap: 16px;
     }
 
-    /* Hide left sidebar on mobile */
     .side:first-child {
         display: none;
     }
@@ -74,4 +75,3 @@
         max-width: 100%;
     }
 }
-

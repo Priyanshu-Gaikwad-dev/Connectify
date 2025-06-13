@@ -3,7 +3,7 @@ import PostInputBox from '../components/PostInputBox';
 import Feed from '../components/Feed';
 import SidebarLeft from '../components/SidebarLeft';
 import SidebarRight from '../components/SidebarRight';
-import '../Styles/DashboardLayout.css';
+import '../Styles/Dashboard.css';
 
 interface Post {
   id: string;
