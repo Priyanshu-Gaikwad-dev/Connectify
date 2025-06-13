@@ -1,37 +1,38 @@
 .input-group {
-  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
+  margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
 .input-group label {
-  margin-bottom: 6px;
-  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
   color: #333;
-  font-size: 14px;
 }
 
 .input {
-  padding: 10px 12px;
-  border: 1.5px solid #ccc;
-  border-radius: 6px;
-  font-size: 15px;
-  transition: border-color 0.3s ease;
-  outline: none;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  color: #495057;
+  border: 1px solid #ced4da;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .input:focus {
-  border-color: #4f46e5; /* Indigo */
-  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 5px #007bff;
 }
 
 .input.error {
-  border-color: #e53e3e; /* Red-600 */
-  background-color: #fff5f5;
+  border-color: #dc3545;
+  background: #f8d7da;
 }
 
 .error-text {
-  color: #e53e3e;
-  font-size: 13px;
-  margin-top: 4px;
+  margin-top: 0.5rem;
+  color: #dc3545;
+  font-size: 0.9rem;
 }

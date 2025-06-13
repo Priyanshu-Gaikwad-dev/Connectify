@@ -7,14 +7,30 @@ interface ButtonProps {
   disabled?: boolean;
   loading?: boolean;
   type?: 'button' | 'submit';
+  variant?: 'primary' | 'secondary' | 'danger';
+  size?: 'small' | 'medium' | 'large';
+  className?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ text, onClick, disabled, loading, type = 'button' }) => {
-  return (
-    <button className="btn" onClick={onClick} disabled={disabled} type={type}>
-      {loading ? 'Loading...' : text}
-    </button>
-  );
-};
+const Button: React.FC<ButtonProps> = ({
+  text,
+  onClick,
+  disabled = false,
+  loading = false,
+  type = 'button',
+  variant = 'primary',
+  size = 'medium',
+  className = '',
+}) => (
+  <button
+    className={`btn ${variant} ${size} ${className}`}
+    onClick={onClick}
+    disabled={disabled || loading}
+    type={type}
+  >
+    {loading && <span className="loading" aria-hidden="true" />}
+    {loading ? 'Loading...' : text}
+  </button>
+);
 
 export default Button;

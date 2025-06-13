@@ -1,25 +1,23 @@
 .logout-button {
-  background-color: #ef4444; /* Tailwind Red-500 */
-  color: white;
-  font-weight: 600;
-  padding: 10px 20px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  color: #ffffff;
+  background: #dc3545;
   border: none;
-  border-radius: 6px;
+  border-radius: 0.5rem;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 100%;
+  transition: all 0.2s ease-in-out;
 }
 
 .logout-button:hover {
-  background-color: #dc2626; /* Red-600 */
-  transform: scale(1.03);
+  background: #c82333;
 }
 
 .logout-button:active {
-  background-color: #b91c1c; /* Red-700 */
+  background: #bd2130;
 }
 
 .logout-button:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.3); /* red focus ring */
+  box-shadow: 0 0 5px 2px #ff6b6b;
 }

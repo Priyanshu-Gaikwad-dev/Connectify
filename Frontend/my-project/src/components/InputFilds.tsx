@@ -1,5 +1,5 @@
-import '../Styles/InputFilds.css';
 import React from 'react';
+import '../Styles/InputFilds.css';
 
 interface InputProps {
   label: string;
@@ -8,20 +8,46 @@ interface InputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   error?: string;
+  placeholder?: string;
+  disabled?: boolean;
 }
 
-const InputField: React.FC<InputProps> = ({ label, type, name, value, onChange, error }) => {
+const InputField: React.FC<InputProps> = ({
+  label,
+  type,
+  name,
+  value,
+  onChange,
+  error,
+  placeholder,
+  disabled = false,
+}) => {
+  const inputId = `input-${name}`;
+
   return (
     <div className="input-group">
-      <label>{label}</label>
+      <label htmlFor={inputId}>{label}</label>
       <input
+        id={inputId}
         className={`input ${error ? 'error' : ''}`}
-        type={type}
         name={name}
+        type={type}
         value={value}
         onChange={onChange}
+        placeholder={placeholder}
+        disabled={disabled}
+        aria-invalid={error ? 'true' : 'false'}
+        aria-describedby={error ? `${inputId}-error` : undefined}
       />
-      {error && <div className="error-text">{error}</div>}
+      {error && (
+        <span
+          className="error-text"
+          id={`${inputId}-error`}
+          role="alert"
+        >
+          {error}
+        </span>
+      )}
     </div>
   );
 };

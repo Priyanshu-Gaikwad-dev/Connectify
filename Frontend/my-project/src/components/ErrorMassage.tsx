@@ -5,8 +5,15 @@ interface ErrorProps {
   message?: string;
 }
 
-const ErrorMessage: React.FC<ErrorProps> = ({ message }) => {
-  return message ? <p className="error-message">{message}</p> : null;
-};
+const ErrorMessage: React.FC<ErrorProps> = ({ message }) =>
+  message ? (
+    <div 
+      className="error-message" 
+      role="alert"
+      aria-live="polite"
+    >
+      {message}
+    </div>
+  ) : null;
 
 export default ErrorMessage;

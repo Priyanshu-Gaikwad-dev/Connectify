@@ -20,71 +20,70 @@ const LoginForm: React.FC = () => {
   const navigate = useNavigate();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData({ ...formData, [e.target.name]: e.target.value });
     setErrorMsg('');
   };
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic validation - just check if fields are not empty
+
     if (!formData.username.trim() || !formData.password.trim()) {
       setErrorMsg('Please fill in all fields');
       return;
     }
-
     setLoading(true);
     try {
-      // Simulate a brief loading state
-      await new Promise(resolve => setTimeout(resolve, 500));
-      
-      // Store a flag in localStorage to maintain login state
+      // Simulating API call
+      await new Promise((resolve) => setTimeout(resolve, 500));
+
       localStorage.setItem('isAuthenticated', 'true');
       navigate('/dashboard');
     } catch {
-      setErrorMsg('An error occurred. Please try again.');
+      setErrorMsg('Login failed. Please try again');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="register-container">
-      <form className="register-card" onSubmit={handleLogin}>
+    <div className="login-container">
+      <form onSubmit={handleLogin}>
         <h2>Login</h2>
-        <InputField 
-          label="Username" 
-          type="text" 
-          name="username" 
-          value={formData.username} 
+
+        <InputField
+          label="Username"
+          name="username"
+          type="text"
+          value={formData.username}
           onChange={handleChange}
         />
-        <InputField 
-          label="Password" 
-          type="password" 
-          name="password" 
-          value={formData.password} 
+
+        <InputField
+          label="Password"
+          name="password"
+          type="password"
+          value={formData.password}
           onChange={handleChange}
         />
-        <Link to="/forgot-password" className="forgot-password-link"> Forgot Password </Link>
-        <Button 
-          text="Login" 
-          type="submit" 
-          disabled={loading} 
-          loading={loading} 
-          
+
+        <Link to="/forgot-password" className="forgot-password-link">
+          Forgot Password
+        </Link>
+
+        <Button
+          text="Login"
+          type="submit"
+          disabled={loading}
+          loading={loading}
         />
+
         {errorMsg && <ErrorMessage message={errorMsg} />}
-        <p className="register-link">
+        <p>
           Don't have an account? <Link to="/register">Register here</Link>
         </p>
       </form>
     </div>
-  );
+  )
 };
 
 export default LoginForm;

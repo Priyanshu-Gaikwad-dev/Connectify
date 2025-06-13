@@ -1,52 +1,69 @@
 import React, { useState } from 'react';
 import { formatDistanceToNow } from 'date-fns';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faHeart as fasHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 import '../Styles/PostCard.css';
 
 interface PostCardProps {
+  id: string;
   username: string;
-  timestamp: Date; // Changed from string to Date
+  timestamp: Date;
   content: string;
+  imageUrl?: string;
+  likesCount?: number;
+  onLike?: (postId: string) => void;
+  onComment?: (postId: string) => void;
+  onShare?: (postId: string) => void;
 }
 
-const PostCard: React.FC<PostCardProps> = ({ username, timestamp, content }) => {
+const PostCard: React.FC<PostCardProps> = ({
+  id,
+  username,
+  timestamp,
+  content,
+  imageUrl,
+  likesCount = 0,
+  onLike,
+  onComment,
+  onShare,
+}) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const handleLike = () => {
-    setIsLiked(!isLiked);
+    setIsLiked((prev) => !prev);
+    onLike?.(id);
   };
-
-  const timeAgo = formatDistanceToNow(timestamp, { addSuffix: true });
 
   return (
     <div className="post-card">
       <div className="post-header">
-        <span className="username"><strong>{username} </strong></span>
-        <div>
-        <span className="timestamp">{timeAgo}</span>
-        <button className="ellipsis-button"><FontAwesomeIcon icon={faEllipsisVertical} /></button>
+        <div className="user-info">
+          <strong>{username}</strong> <span>{formatDistanceToNow(timestamp, { addSuffix: true })}</span>
         </div>
+        <button aria-label="More options">
+          <FontAwesomeIcon icon={faEllipsisVertical} />
+        </button>
       </div>
-      
+
       <div className="post-content">
-        {content}
+        <p>{content}</p>
+        {imageUrl && <img src={imageUrl} alt="Post" />}
+      </div>
+
+      <div className="post-stats">
+        <span>{likesCount} likes</span>
       </div>
 
       <div className="post-actions">
-        <button 
-          className={`post-btn like-button ${isLiked ? 'liked' : ''}`}
-          onClick={handleLike}
-          aria-label={isLiked ? 'Unlike post' : 'Like post'}
-        >
-          {isLiked ? '❤️' : '🤍'} Like
+        <button onClick={handleLike}>
+          <FontAwesomeIcon icon={isLiked ? fasHeart : farHeart} />
+          {isLiked ? 'Liked' : 'Like'}
         </button>
-        <button className="post-btn comment-button" aria-label="Comment on post">
-          💬 Comment
-        </button>
-        <button className="post-btn share-button" aria-label="Share post">
-          🔗 Share
-        </button>
+
+        <button onClick={() => onComment?.(id)}>💬 Comment</button>
+
+        <button onClick={() => onShare?.(id)}>🔗 Share</button>
       </div>
     </div>
   );

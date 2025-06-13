@@ -1,58 +1,77 @@
-/* Dashboard container layout */
+/* Layout Container */
 .dashboard-layout {
-  display: flex;
-  height: 100vh;
-  background-color: #f5f5f5;
-  overflow: hidden;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 24px;
+    background-color: #f0f2f5;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1400px;
 }
 
-/* Left Sidebar */
-.sidebar-left {
-  width: 250px;
-  background-color: #ffffff;
-  border-right: 1px solid #ddd;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
+
+
+/* Feed Section */
+.feed {
+    background-color: transparent;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
 }
 
-/* Right Sidebar */
-.sidebar-right {
-  width: 250px;
-  background-color: #ffffff;
-  border-left: 1px solid #ddd;
-  padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
+/* Scrollbar Styling */
+.side::-webkit-scrollbar,
+.feed::-webkit-scrollbar {
+    width: 6px;
 }
 
-/* Main feed area */
-.feed-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  overflow-y: auto;
-  box-sizing: border-box;
+.side::-webkit-scrollbar-track,
+.feed::-webkit-scrollbar-track {
+    background-color: transparent;
 }
 
-/* Scrollbar styling (optional) */
-.feed-container::-webkit-scrollbar,
-.sidebar-left::-webkit-scrollbar,
-.sidebar-right::-webkit-scrollbar {
-  width: 6px;
+.side::-webkit-scrollbar-thumb,
+.feed::-webkit-scrollbar-thumb {
+    background-color: #dadde1;
+    border-radius: 3px;
 }
 
-.feed-container::-webkit-scrollbar-thumb,
-.sidebar-left::-webkit-scrollbar-thumb,
-.sidebar-right::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
+.side::-webkit-scrollbar-thumb:hover,
+.feed::-webkit-scrollbar-thumb:hover {
+    background-color: #bec3c9;
 }
 
-.feed-container::-webkit-scrollbar-track,
-.sidebar-left::-webkit-scrollbar-track,
-.sidebar-right::-webkit-scrollbar-track {
-  background: transparent;
+/* Firefox Scrollbar */
+.side,
+.feed {
+    scrollbar-width: thin;
+    scrollbar-color: #dadde1 transparent;
 }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .dashboard-layout {
+        grid-template-columns: 240px 1fr;
+    }
+
+    /* Hide right sidebar on medium screens */
+    .side:last-child {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    /* Hide left sidebar on mobile */
+    .side:first-child {
+        display: none;
+    }
+
+    .feed {
+        max-width: 100%;
+    }
+}
+
